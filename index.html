@@ -1,0 +1,1749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Fast Business Line LLC | Daily Business Setup Report</title>
+  <link rel="icon" type="image/png" href="fast business line logo.jpg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root {
+      --bg: #07111f;
+      --bg2: #0d1728;
+      --card: #111d30;
+      --card2: #142238;
+      --border: rgba(255,255,255,.08);
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --primary: #0ea5e9;
+      --primary-dark: #0284c7;
+      --green: #22c55e;
+      --green-dark: #16a34a;
+      --red: #ef4444;
+      --orange: #f59e0b;
+      --violet: #8b5cf6;
+      --radius: 20px;
+      --shadow: 0 20px 45px rgba(0,0,0,.25);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      color: var(--text);
+      min-height: 100vh;
+
+      background:
+        radial-gradient(circle at 0 0, rgba(14,165,233,.14), transparent 30%),
+        radial-gradient(circle at 100% 0, rgba(34,197,94,.08), transparent 25%),
+        linear-gradient(135deg, var(--bg), var(--bg2));
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font-family: inherit;
+    }
+
+    .container {
+      width: min(1450px, 94%);
+      margin: auto;
+      padding: 25px 0 50px;
+    }
+
+    /* HEADER */
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+
+      background: rgba(255,255,255,.055);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 18px 22px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(15px);
+      margin-bottom: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .logo {
+      width: 58px;
+      height: 58px;
+      border-radius: 15px;
+      background: white;
+      object-fit: contain;
+      padding: 4px;
+    }
+
+    .brand h2 {
+      margin: 0;
+      font-size: 21px;
+      font-weight: 800;
+    }
+
+    .brand p {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .company-badge {
+      padding: 10px 15px;
+      border-radius: 999px;
+      background: rgba(34,197,94,.10);
+      border: 1px solid rgba(34,197,94,.22);
+      color: #bbf7d0;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    /* HERO */
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.3fr .7fr;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .hero-card,
+    .target-card {
+      background: rgba(255,255,255,.055);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 25px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card h1 {
+      margin: 0 0 8px;
+      font-size: clamp(27px,4vw,40px);
+      line-height: 1.12;
+    }
+
+    .hero-card p {
+      color: var(--muted);
+      max-width: 780px;
+      margin: 0;
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .tag {
+      font-size: 11px;
+      padding: 8px 11px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid var(--border);
+      color: #dbeafe;
+    }
+
+    .target-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .target-label {
+      color: var(--muted);
+      text-transform: uppercase;
+      font-size: 11px;
+      letter-spacing: .8px;
+      font-weight: 700;
+    }
+
+    .target-number {
+      font-size: 38px;
+      font-weight: 800;
+      margin: 4px 0;
+    }
+
+    .target-sub {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    /* STATS */
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(6,1fr);
+      gap: 13px;
+      margin-bottom: 18px;
+    }
+
+    .stat {
+      background: rgba(255,255,255,.055);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 17px;
+      box-shadow: var(--shadow);
+    }
+
+    .stat-title {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .stat-value {
+      font-size: 27px;
+      font-weight: 800;
+      margin-top: 12px;
+    }
+
+    .stat-sub {
+      color: var(--muted);
+      font-size: 10px;
+      margin-top: 5px;
+    }
+
+    /* PANELS */
+
+    .panel {
+      background: rgba(255,255,255,.055);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow);
+      margin-bottom: 18px;
+    }
+
+    .panel-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .panel-title {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    .panel-sub {
+      color: var(--muted);
+      font-size: 11px;
+      margin-top: 4px;
+    }
+
+    .mode {
+      font-size: 11px;
+      padding: 9px 13px;
+      border-radius: 999px;
+      background: rgba(14,165,233,.1);
+      border: 1px solid rgba(14,165,233,.2);
+    }
+
+    /* FORM */
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 13px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .field label {
+      font-size: 11px;
+      color: #dbeafe;
+      font-weight: 700;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px 13px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: #0b1626;
+      color: white;
+      outline: none;
+      font-size: 13px;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(14,165,233,.08);
+    }
+
+    textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    .full {
+      grid-column: 1 / -1;
+    }
+
+    .section-label {
+      grid-column: 1 / -1;
+      margin-top: 8px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+      font-size: 12px;
+      font-weight: 800;
+      color: #7dd3fc;
+    }
+
+    /* BUTTONS */
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    button {
+      border: 0;
+      cursor: pointer;
+      padding: 11px 15px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 700;
+      transition: .2s;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+    }
+
+    .primary {
+      background: linear-gradient(135deg,var(--primary),var(--primary-dark));
+      color: white;
+    }
+
+    .whatsapp {
+      background: linear-gradient(135deg,#25d366,#16a34a);
+      color: white;
+    }
+
+    .secondary {
+      background: #334155;
+      color: white;
+    }
+
+    .danger {
+      background: var(--red);
+      color: white;
+    }
+
+    .warning {
+      background: var(--orange);
+      color: #111827;
+    }
+
+    .small {
+      padding: 7px 10px;
+      font-size: 10px;
+    }
+
+    /* TABLE */
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 1500px;
+      font-size: 11px;
+    }
+
+    th,
+    td {
+      padding: 11px 8px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+
+    th {
+      background: #111d30;
+      color: #cbd5e1;
+      text-transform: uppercase;
+      font-size: 10px;
+    }
+
+    tbody tr:hover {
+      background: rgba(255,255,255,.025);
+    }
+
+    .good {
+      color: #4ade80;
+      font-weight: 800;
+    }
+
+    .bad {
+      color: #f87171;
+      font-weight: 800;
+    }
+
+    .empty {
+      color: var(--muted);
+      padding: 30px;
+    }
+
+    /* TOAST */
+
+    .toast {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      padding: 13px 17px;
+      background: #111d30;
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      box-shadow: var(--shadow);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(15px);
+      transition: .25s;
+      z-index: 9999;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media(max-width:1200px) {
+      .stats {
+        grid-template-columns: repeat(3,1fr);
+      }
+
+      .form-grid {
+        grid-template-columns: repeat(3,1fr);
+      }
+    }
+
+    @media(max-width:900px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .form-grid {
+        grid-template-columns: repeat(2,1fr);
+      }
+    }
+
+    @media(max-width:650px) {
+      .stats {
+        grid-template-columns: repeat(2,1fr);
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .container {
+        width: 94%;
+      }
+
+      .actions button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="topbar">
+
+    <div class="brand">
+      <!-- Change this to your actual Fast Business Line logo -->
+      <img src="fast business line logo.jpg" class="logo" alt="Fast Business Line LLC Logo">
+
+      <div>
+        <h2>FAST BUSINESS LINE LLC</h2>
+        <p>Business Setup • Company Formation • Sales Performance</p>
+      </div>
+    </div>
+
+    <div class="company-badge">
+      🏢 Business Setup Management System
+    </div>
+
+  </div>
+
+
+  <!-- HERO -->
+  <div class="hero">
+
+    <div class="hero-card">
+
+      <h1>Business Setup Daily Report Dashboard</h1>
+
+      <p>
+        Monitor business setup inquiries, company formation services,
+        qualified prospects, follow-ups, converted clients and sales
+        performance for the Fast Business Line LLC team.
+      </p>
+
+      <div class="tags">
+        <span class="tag">Business Setup</span>
+        <span class="tag">Mainland</span>
+        <span class="tag">Free Zone</span>
+        <span class="tag">Offshore</span>
+        <span class="tag">Trade License</span>
+        <span class="tag">PRO Services</span>
+        <span class="tag">Corporate Banking</span>
+      </div>
+
+    </div>
+
+    <div class="target-card">
+
+      <div class="target-label">Monthly Inquiry Target</div>
+
+      <div class="target-number" id="targetDisplay">
+       1,200
+      </div>
+
+      <div class="target-sub">
+        Fast Business Line LLC team target
+      </div>
+
+      <div class="target-label" style="margin-top:18px;">
+        Daily Agent Target
+      </div>
+
+      <div class="target-number" style="font-size:28px;" id="dailyTargetDisplay">
+        20
+      </div>
+
+      <div class="target-sub">
+        Minimum inquiries per agent / report
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- DASHBOARD CARDS -->
+  <div class="stats">
+
+    <div class="stat">
+      <div class="stat-title">Today's Inquiries</div>
+      <div class="stat-value" id="todayInquiries">0</div>
+      <div class="stat-sub">Total received today</div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-title">Monthly Inquiries</div>
+      <div class="stat-value" id="monthInquiries">0</div>
+      <div class="stat-sub">Current month</div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-title">Qualified Leads</div>
+      <div class="stat-value" id="qualifiedTotal">0</div>
+      <div class="stat-sub">Current month</div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-title">Converted Clients</div>
+      <div class="stat-value" id="convertedTotal">0</div>
+      <div class="stat-sub">Successfully closed</div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-title">Conversion Rate</div>
+      <div class="stat-value" id="conversionRate">0%</div>
+      <div class="stat-sub">Conversions ÷ inquiries</div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-title">Monthly Revenue</div>
+      <div class="stat-value" id="revenueTotal">AED 0</div>
+      <div class="stat-sub">Recorded sales revenue</div>
+    </div>
+
+  </div>
+
+
+  <!-- FORM -->
+  <div class="panel">
+
+    <div class="panel-header">
+
+      <div>
+        <h3 class="panel-title">Add Daily Business Setup Report</h3>
+
+        <div class="panel-sub">
+          Complete the daily sales report, save it and send the report to management via WhatsApp.
+        </div>
+      </div>
+
+      <div class="mode" id="modeBadge">
+        Mode: Add New Report
+      </div>
+
+    </div>
+
+
+    <div class="form-grid">
+
+      <div class="section-label">
+        👤 Report Information
+      </div>
+
+      <div class="field">
+        <label>Date</label>
+        <input type="date" id="date">
+      </div>
+
+     <div class="field">
+  <label>Sales Agent</label>
+
+  <select id="agent">
+    <option value="">Select Sales Agent</option>
+    <option value="Vasiha">Vasiha</option>
+    <option value="Osman">Osman</option>
+  </select>
+</div>
+
+      <div class="field">
+        <label>Total Inquiries</label>
+        <input type="number" id="inquiries" min="0" placeholder="0">
+      </div>
+
+      <div class="field">
+        <label>Revenue (AED)</label>
+        <input type="number" id="revenue" min="0" step="0.01" placeholder="0.00">
+      </div>
+
+
+      <div class="section-label">
+        🏢 Business Setup Inquiry Breakdown
+      </div>
+
+      <div class="field">
+        <label>Business Setup</label>
+        <input type="number" id="businessSetup" min="0" placeholder="0">
+      </div>
+
+      <div class="field">
+        <label>Mainland</label>
+        <input type="number" id="mainland" min="0" placeholder="0">
+      </div>
+
+      <div class="field">
+        <label>Free Zone</label>
+        <input type="number" id="freezone" min="0" placeholder="0">
+      </div>
+
+      <div class="field">
+        <label>Offshore</label>
+        <input type="number" id="offshore" min="0" placeholder="0">
+      </div>
+
+      <div class="field">
+        <label>Trade License</label>
+        <input type="number" id="tradeLicense" min="0" placeholder="0">
+      </div>
+
+      <div class="field">
+        <label>License Renewal</label>
+        <input type="number" id="renewal" min="0" placeholder="0">
+      </div>
+
+      <div class="field">
+        <label>PRO Services</label>
+        <input type="number" id="proServices" min="0" placeholder="0">
+      </div>
+
+      <div class="field">
+        <label>Corporate Bank Account</label>
+        <input type="number" id="bankAccount" min="0" placeholder="0">
+      </div>
+
+      <div class="field">
+        <label>Corporate Tax / VAT</label>
+        <input type="number" id="taxVat" min="0" placeholder="0">
+      </div>
+
+
+      <div class="section-label">
+        📈 Lead & Sales Status
+      </div>
+
+      <div class="field">
+        <label>Follow-Ups</label>
+        <input type="number" id="followups" min="0" placeholder="0">
+      </div>
+
+      <div class="field">
+        <label>Qualified Leads</label>
+        <input type="number" id="qualified" min="0" placeholder="0">
+      </div>
+
+      <div class="field">
+        <label>No Response</label>
+        <input type="number" id="noResponse" min="0" placeholder="0">
+      </div>
+
+      <div class="field">
+        <label>Converted Clients</label>
+        <input type="number" id="converted" min="0" placeholder="0">
+      </div>
+
+
+      <div class="field full">
+        <label>Remarks / Important Follow-Up Notes</label>
+
+        <textarea
+          id="remarks"
+          placeholder="Add important client updates, pending follow-ups or notes..."
+        ></textarea>
+      </div>
+
+    </div>
+
+
+    <div class="actions">
+
+      <button class="primary" onclick="saveReport()">
+        💾 Save Report
+      </button>
+
+      <button class="whatsapp" onclick="saveAndWhatsApp()">
+        🟢 Save & Send to WhatsApp
+      </button>
+
+      <button class="whatsapp" onclick="sendWhatsApp()">
+        💬 Send Only to WhatsApp
+      </button>
+
+      <button class="secondary" onclick="clearForm()">
+        Clear Form
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- REPORT TABLE -->
+  <div class="panel">
+
+    <div class="panel-header">
+
+      <div>
+        <h3 class="panel-title">Daily Business Setup Reports</h3>
+
+        <div class="panel-sub">
+          Saved Fast Business Line LLC team reports.
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="table-wrap">
+
+      <table>
+
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Agent</th>
+            <th>Inquiries</th>
+            <th>Business Setup</th>
+            <th>Mainland</th>
+            <th>Free Zone</th>
+            <th>Offshore</th>
+            <th>Trade License</th>
+            <th>Renewal</th>
+            <th>PRO</th>
+            <th>Bank</th>
+            <th>Tax/VAT</th>
+            <th>Follow-Up</th>
+            <th>Qualified</th>
+            <th>No Response</th>
+            <th>Converted</th>
+            <th>Revenue</th>
+            <th>Target</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+
+        <tbody id="reportTable"></tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<div class="toast" id="toast"></div>
+
+
+<script>
+
+  /* =========================================================
+     FAST BUSINESS LINE LLC SETTINGS
+     ========================================================= */
+
+  const DAILY_TARGET = 20;
+  const MONTHLY_TARGET = 1200;
+
+  /*
+    IMPORTANT:
+    Put YOUR WhatsApp number here.
+
+    Example UAE number:
+    971501234567
+
+    Do NOT use:
+    +971 50 123 4567
+
+    Use:
+    971501234567
+  */
+
+  const WHATSAPP_NUMBER = "971526461132";
+
+
+  /* =========================================================
+     STORAGE
+     ========================================================= */
+
+  let reports =
+    JSON.parse(localStorage.getItem("fastBusinessLineReports")) || [];
+
+  let editId = null;
+
+
+  /* =========================================================
+     HELPERS
+     ========================================================= */
+
+  function number(id) {
+    return Math.max(
+      0,
+      Number(document.getElementById(id).value) || 0
+    );
+  }
+
+
+  function value(id) {
+    return document.getElementById(id).value.trim();
+  }
+
+
+  function today() {
+
+    const d = new Date();
+
+    const year = d.getFullYear();
+
+    const month =
+      String(d.getMonth() + 1).padStart(2,"0");
+
+    const day =
+      String(d.getDate()).padStart(2,"0");
+
+    return `${year}-${month}-${day}`;
+  }
+
+
+  function currentMonth() {
+    return today().slice(0,7);
+  }
+
+
+  function money(amount) {
+
+    return Number(amount || 0).toLocaleString(
+      "en-AE",
+      {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      }
+    );
+
+  }
+
+
+  function showToast(message) {
+
+    const toast =
+      document.getElementById("toast");
+
+    toast.textContent = message;
+
+    toast.classList.add("show");
+
+    clearTimeout(showToast.timer);
+
+    showToast.timer =
+      setTimeout(() => {
+
+        toast.classList.remove("show");
+
+      },2500);
+
+  }
+
+
+  /* =========================================================
+     GET FORM DATA
+     ========================================================= */
+
+  function getFormData() {
+
+    return {
+
+      id:
+        editId || Date.now(),
+
+      date:
+        value("date"),
+
+      month:
+        value("date").slice(0,7),
+
+      agent:
+        value("agent"),
+
+      inquiries:
+        number("inquiries"),
+
+      businessSetup:
+        number("businessSetup"),
+
+      mainland:
+        number("mainland"),
+
+      freezone:
+        number("freezone"),
+
+      offshore:
+        number("offshore"),
+
+      tradeLicense:
+        number("tradeLicense"),
+
+      renewal:
+        number("renewal"),
+
+      proServices:
+        number("proServices"),
+
+      bankAccount:
+        number("bankAccount"),
+
+      taxVat:
+        number("taxVat"),
+
+      followups:
+        number("followups"),
+
+      qualified:
+        number("qualified"),
+
+      noResponse:
+        number("noResponse"),
+
+      converted:
+        number("converted"),
+
+      revenue:
+        number("revenue"),
+
+      remarks:
+        value("remarks")
+
+    };
+
+  }
+
+
+  /* =========================================================
+     VALIDATION
+     ========================================================= */
+
+  function validateReport(report) {
+
+    if (!report.date) {
+
+      alert("Please select the report date.");
+
+      return false;
+
+    }
+
+
+    if (!report.agent) {
+
+      alert("Please select the sales agent.");
+
+      return false;
+
+    }
+
+
+    return true;
+
+  }
+
+
+  /* =========================================================
+     SAVE
+     ========================================================= */
+
+  function saveReport() {
+
+    const report =
+      getFormData();
+
+
+    if (!validateReport(report)) {
+      return;
+    }
+
+
+    if (editId) {
+
+      reports =
+        reports.map(item =>
+          item.id === editId
+            ? report
+            : item
+        );
+
+      showToast("✅ Report updated successfully");
+
+      editId = null;
+
+    }
+
+    else {
+
+      reports.push(report);
+
+      showToast("✅ Daily report saved");
+
+    }
+
+
+    saveStorage();
+
+    clearForm();
+
+    renderAll();
+
+  }
+
+
+  function saveStorage() {
+
+    localStorage.setItem(
+      "fastBusinessLineReports",
+      JSON.stringify(reports)
+    );
+
+  }
+
+
+  /* =========================================================
+     WHATSAPP MESSAGE
+     ========================================================= */
+
+  function createWhatsAppMessage(report) {
+
+    const targetStatus =
+      report.inquiries >= DAILY_TARGET
+        ? "✅ DAILY TARGET REACHED"
+        : `⚠️ ${DAILY_TARGET - report.inquiries} inquiries remaining`;
+
+
+    const conversion =
+      report.inquiries > 0
+        ? (
+            (report.converted / report.inquiries) * 100
+          ).toFixed(1)
+        : "0.0";
+
+
+    return `
+FAST BUSINESS LINE LLC
+DAILY BUSINESS SETUP REPORT
+
+📅 Date: ${report.date}
+👤 Sales Agent: ${report.agent}
+
+━━━━━━━━━━━━━━━━━━
+📊 DAILY PERFORMANCE
+━━━━━━━━━━━━━━━━━━
+
+📥 Total Inquiries: ${report.inquiries}
+
+🏢 Business Setup: ${report.businessSetup}
+🏙️ Mainland: ${report.mainland}
+🌐 Free Zone: ${report.freezone}
+🌍 Offshore: ${report.offshore}
+
+📄 Trade License: ${report.tradeLicense}
+🔄 License Renewal: ${report.renewal}
+📑 PRO Services: ${report.proServices}
+🏦 Corporate Bank Account: ${report.bankAccount}
+💰 Corporate Tax / VAT: ${report.taxVat}
+
+━━━━━━━━━━━━━━━━━━
+📈 LEAD STATUS
+━━━━━━━━━━━━━━━━━━
+
+📞 Follow-Ups: ${report.followups}
+⭐ Qualified Leads: ${report.qualified}
+❌ No Response: ${report.noResponse}
+
+━━━━━━━━━━━━━━━━━━
+🏆 SALES RESULT
+━━━━━━━━━━━━━━━━━━
+
+✅ Converted Clients: ${report.converted}
+
+📊 Conversion Rate:
+${conversion}%
+
+💵 Revenue:
+AED ${money(report.revenue)}
+
+🎯 Daily Target:
+${DAILY_TARGET}
+
+${targetStatus}
+
+━━━━━━━━━━━━━━━━━━
+📝 REMARKS
+━━━━━━━━━━━━━━━━━━
+
+${report.remarks || "No remarks provided."}
+
+Submitted by:
+${report.agent}
+
+Fast Business Line LLC
+Business Setup & Company Formation
+`.trim();
+
+  }
+
+
+  /* =========================================================
+     SEND WHATSAPP
+     ========================================================= */
+
+  function sendWhatsApp() {
+
+    const report =
+      getFormData();
+
+
+    if (!validateReport(report)) {
+      return;
+    }
+
+
+    if (
+      !WHATSAPP_NUMBER ||
+      WHATSAPP_NUMBER.includes("X")
+    ) {
+
+      alert(
+        "Please add your WhatsApp number inside WHATSAPP_NUMBER first."
+      );
+
+      return;
+
+    }
+
+
+    const message =
+      createWhatsAppMessage(report);
+
+
+   const url =
+  "https://api.whatsapp.com/send?phone=" +
+  encodeURIComponent(WHATSAPP_NUMBER) +
+  "&text=" +
+  encodeURIComponent(message);
+
+
+    window.open(
+      url,
+      "_blank",
+      "noopener,noreferrer"
+    );
+
+  }
+
+
+  /* =========================================================
+     SAVE + WHATSAPP
+     ========================================================= */
+
+  function saveAndWhatsApp() {
+
+    const report =
+      getFormData();
+
+
+    if (!validateReport(report)) {
+      return;
+    }
+
+
+    if (
+      !WHATSAPP_NUMBER ||
+      WHATSAPP_NUMBER.includes("X")
+    ) {
+
+      alert(
+        "Please configure your WhatsApp number first."
+      );
+
+      return;
+
+    }
+
+
+    if (editId) {
+
+      reports =
+        reports.map(item =>
+          item.id === editId
+            ? report
+            : item
+        );
+
+      editId = null;
+
+    }
+
+    else {
+
+      reports.push(report);
+
+    }
+
+
+    saveStorage();
+
+    renderAll();
+
+
+    const message =
+      createWhatsAppMessage(report);
+
+
+   const url =
+  "https://api.whatsapp.com/send?phone=" +
+  encodeURIComponent(WHATSAPP_NUMBER) +
+  "&text=" +
+  encodeURIComponent(message);
+
+
+    window.open(
+      url,
+      "_blank",
+      "noopener,noreferrer"
+    );
+
+
+    clearForm();
+
+    showToast(
+      "✅ Report saved — WhatsApp opened"
+    );
+
+  }
+
+
+  /* =========================================================
+     EDIT
+     ========================================================= */
+
+  function editReport(id) {
+
+    const r =
+      reports.find(item =>
+        item.id === id
+      );
+
+
+    if (!r) {
+      return;
+    }
+
+
+    editId = id;
+
+
+    document.getElementById("date").value =
+      r.date;
+
+    document.getElementById("agent").value =
+      r.agent;
+
+    document.getElementById("inquiries").value =
+      r.inquiries;
+
+    document.getElementById("businessSetup").value =
+      r.businessSetup;
+
+    document.getElementById("mainland").value =
+      r.mainland;
+
+    document.getElementById("freezone").value =
+      r.freezone;
+
+    document.getElementById("offshore").value =
+      r.offshore;
+
+    document.getElementById("tradeLicense").value =
+      r.tradeLicense;
+
+    document.getElementById("renewal").value =
+      r.renewal;
+
+    document.getElementById("proServices").value =
+      r.proServices;
+
+    document.getElementById("bankAccount").value =
+      r.bankAccount;
+
+    document.getElementById("taxVat").value =
+      r.taxVat;
+
+    document.getElementById("followups").value =
+      r.followups;
+
+    document.getElementById("qualified").value =
+      r.qualified;
+
+    document.getElementById("noResponse").value =
+      r.noResponse;
+
+    document.getElementById("converted").value =
+      r.converted;
+
+    document.getElementById("revenue").value =
+      r.revenue;
+
+    document.getElementById("remarks").value =
+      r.remarks || "";
+
+
+    document.getElementById("modeBadge").textContent =
+      "Mode: Editing Report";
+
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+
+  }
+
+
+  /* =========================================================
+     DELETE
+     ========================================================= */
+
+  function deleteReport(id) {
+
+    const confirmDelete =
+      confirm(
+        "Are you sure you want to delete this report?"
+      );
+
+
+    if (!confirmDelete) {
+      return;
+    }
+
+
+    reports =
+      reports.filter(item =>
+        item.id !== id
+      );
+
+
+    saveStorage();
+
+    renderAll();
+
+    showToast(
+      "🗑️ Report deleted"
+    );
+
+  }
+
+
+  /* =========================================================
+     CLEAR FORM
+     ========================================================= */
+
+  function clearForm() {
+
+    editId = null;
+
+
+    document.getElementById("date").value =
+      today();
+
+    document.getElementById("agent").value =
+      "";
+
+
+    const numericFields = [
+
+      "inquiries",
+      "businessSetup",
+      "mainland",
+      "freezone",
+      "offshore",
+      "tradeLicense",
+      "renewal",
+      "proServices",
+      "bankAccount",
+      "taxVat",
+      "followups",
+      "qualified",
+      "noResponse",
+      "converted",
+      "revenue"
+
+    ];
+
+
+    numericFields.forEach(id => {
+
+      document.getElementById(id).value =
+        "";
+
+    });
+
+
+    document.getElementById("remarks").value =
+      "";
+
+
+    document.getElementById("modeBadge").textContent =
+      "Mode: Add New Report";
+
+  }
+
+
+  /* =========================================================
+     RENDER TABLE
+     ========================================================= */
+
+  function renderTable() {
+
+    const table =
+      document.getElementById("reportTable");
+
+
+    table.innerHTML = "";
+
+
+    if (reports.length === 0) {
+
+      table.innerHTML = `
+        <tr>
+          <td colspan="19" class="empty">
+            No business setup reports saved yet.
+          </td>
+        </tr>
+      `;
+
+      return;
+
+    }
+
+
+    const sorted =
+      [...reports].sort(
+        (a,b) =>
+          new Date(b.date) -
+          new Date(a.date)
+      );
+
+
+    sorted.forEach(r => {
+
+      const status =
+        r.inquiries >= DAILY_TARGET
+          ? `<span class="good">Reached</span>`
+          : `<span class="bad">${DAILY_TARGET - r.inquiries} left</span>`;
+
+
+      table.innerHTML += `
+
+        <tr>
+
+          <td>${r.date}</td>
+
+          <td>
+            <strong>${r.agent}</strong>
+          </td>
+
+          <td>${r.inquiries}</td>
+
+          <td>${r.businessSetup}</td>
+
+          <td>${r.mainland}</td>
+
+          <td>${r.freezone}</td>
+
+          <td>${r.offshore}</td>
+
+          <td>${r.tradeLicense}</td>
+
+          <td>${r.renewal}</td>
+
+          <td>${r.proServices}</td>
+
+          <td>${r.bankAccount}</td>
+
+          <td>${r.taxVat}</td>
+
+          <td>${r.followups}</td>
+
+          <td>${r.qualified}</td>
+
+          <td>${r.noResponse}</td>
+
+          <td>${r.converted}</td>
+
+          <td>
+            AED ${money(r.revenue)}
+          </td>
+
+          <td>${status}</td>
+
+          <td>
+
+            <button
+              class="warning small"
+              onclick="editReport(${r.id})">
+              Edit
+            </button>
+
+            <button
+              class="danger small"
+              onclick="deleteReport(${r.id})">
+              Delete
+            </button>
+
+          </td>
+
+        </tr>
+
+      `;
+
+    });
+
+  }
+
+
+  /* =========================================================
+     DASHBOARD CARDS
+     ========================================================= */
+
+  function updateDashboard() {
+
+    const todayReports =
+      reports.filter(
+        r => r.date === today()
+      );
+
+
+    const monthReports =
+      reports.filter(
+        r => r.month === currentMonth()
+      );
+
+
+    const todayInquiry =
+      todayReports.reduce(
+        (sum,r) =>
+          sum + Number(r.inquiries || 0),
+        0
+      );
+
+
+    const monthlyInquiry =
+      monthReports.reduce(
+        (sum,r) =>
+          sum + Number(r.inquiries || 0),
+        0
+      );
+
+
+    const qualified =
+      monthReports.reduce(
+        (sum,r) =>
+          sum + Number(r.qualified || 0),
+        0
+      );
+
+
+    const converted =
+      monthReports.reduce(
+        (sum,r) =>
+          sum + Number(r.converted || 0),
+        0
+      );
+
+
+    const revenue =
+      monthReports.reduce(
+        (sum,r) =>
+          sum + Number(r.revenue || 0),
+        0
+      );
+
+
+    const conversion =
+      monthlyInquiry > 0
+        ? (
+            converted /
+            monthlyInquiry *
+            100
+          ).toFixed(1)
+        : "0.0";
+
+
+    document.getElementById(
+      "todayInquiries"
+    ).textContent =
+      todayInquiry.toLocaleString();
+
+
+    document.getElementById(
+      "monthInquiries"
+    ).textContent =
+      monthlyInquiry.toLocaleString();
+
+
+    document.getElementById(
+      "qualifiedTotal"
+    ).textContent =
+      qualified.toLocaleString();
+
+
+    document.getElementById(
+      "convertedTotal"
+    ).textContent =
+      converted.toLocaleString();
+
+
+    document.getElementById(
+      "conversionRate"
+    ).textContent =
+      conversion + "%";
+
+
+    document.getElementById(
+      "revenueTotal"
+    ).textContent =
+      "AED " + money(revenue);
+
+  }
+
+
+  /* =========================================================
+     RENDER EVERYTHING
+     ========================================================= */
+
+  function renderAll() {
+
+    renderTable();
+
+    updateDashboard();
+
+  }
+
+
+  /* =========================================================
+     INITIALIZE
+     ========================================================= */
+
+  document.getElementById("date").value =
+    today();
+
+
+  document.getElementById(
+    "targetDisplay"
+  ).textContent =
+    MONTHLY_TARGET.toLocaleString();
+
+
+  document.getElementById(
+    "dailyTargetDisplay"
+  ).textContent =
+    DAILY_TARGET.toLocaleString();
+
+
+  renderAll();
+
+</script>
+
+</body>
+</html>
