@@ -646,8 +646,12 @@
 
   <select id="agent">
     <option value="">Select Sales Agent</option>
+     <option value="Manager">Manager</option>
+    <option value="Enrico">Enrico</option>
     <option value="Vasiha">Vasiha</option>
     <option value="Osman">Osman</option>
+    
+  
   </select>
 </div>
 
@@ -710,6 +714,11 @@
         <label>Corporate Tax / VAT</label>
         <input type="number" id="taxVat" min="0" placeholder="0">
       </div>
+ 
+<div class="field">
+  <label>Meeting</label>
+  <input type="number" id="meeting" min="0" placeholder="0">
+</div>
 
 
       <div class="section-label">
@@ -797,6 +806,7 @@
             <th>Date</th>
             <th>Agent</th>
             <th>Inquiries</th>
+            <th>Meeting</th>
             <th>Business Setup</th>
             <th>Mainland</th>
             <th>Free Zone</th>
@@ -958,11 +968,14 @@
       agent:
         value("agent"),
 
-      inquiries:
-        number("inquiries"),
+     inquiries:
+  number("inquiries"),
 
-      businessSetup:
-        number("businessSetup"),
+meeting:
+  number("meeting"),
+
+businessSetup:
+  number("businessSetup"),
 
       mainland:
         number("mainland"),
@@ -1131,6 +1144,7 @@ DAILY BUSINESS SETUP REPORT
 
 📥 Total Inquiries: ${report.inquiries}
 
+🤝 Meeting: ${report.meeting}
 🏢 Business Setup: ${report.businessSetup}
 🏙️ Mainland: ${report.mainland}
 🌐 Free Zone: ${report.freezone}
@@ -1342,6 +1356,9 @@ Business Setup & Company Formation
     document.getElementById("inquiries").value =
       r.inquiries;
 
+      document.getElementById("meeting").value =
+  r.meeting || 0;
+
     document.getElementById("businessSetup").value =
       r.businessSetup;
 
@@ -1453,6 +1470,7 @@ Business Setup & Company Formation
     const numericFields = [
 
       "inquiries",
+      "meeting",
       "businessSetup",
       "mainland",
       "freezone",
@@ -1506,7 +1524,7 @@ Business Setup & Company Formation
 
       table.innerHTML = `
         <tr>
-          <td colspan="19" class="empty">
+          <td colspan="20" class="empty">
             No business setup reports saved yet.
           </td>
         </tr>
@@ -1544,6 +1562,8 @@ Business Setup & Company Formation
           </td>
 
           <td>${r.inquiries}</td>
+
+          <td>${r.meeting || 0}</td>
 
           <td>${r.businessSetup}</td>
 
